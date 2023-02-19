@@ -18,7 +18,7 @@ if (interactive(info))
 _puts("$ ");
 _eputchar(BUF_FLUSH);
 r = get_input(info);
-if (r != -1B)
+if (r != -1)
 {
 set_info(info, av);
 builtin_ret = find_builtin(info);
@@ -67,7 +67,7 @@ builtin_table builtintbl[] = {
 };
 
 for (i = 0; builtintbl[i].type; i++)
-if (_strcmp(info->
+if (_strcmp(info->argv[0], builtintbl[i].type) == 0)
 {
 info->line_count++;
 built_in_ret = builtintbl[i].func(info);
@@ -127,7 +127,7 @@ void fork_cmd(info_t *info)
 {
 pid_t child_pid;
 
-child_pid = fork();
+_pid = fork();
 if (child_pid == -1)
 {
 /* TODO: PUT ERROR FUNCTION */

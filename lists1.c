@@ -61,9 +61,9 @@ return (strs);
  *
  * Return: size of list
  */
-ze_t print_list(const list_t *h)
+size_t print_list(const list_t *h)
 {
-ize_t i = 0;
+size_t i = 0;
 
 while (h)
 {
@@ -118,3 +118,4 @@ head = head->next;
 i++;
 }
 return (-1);
+}
