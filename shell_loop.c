@@ -11,6 +11,7 @@ int hsh(info_t *info, char **av)
 {
 ssize_t r = 0;
 int builtin_ret = 0;
+
 while (r != -1 && builtin_ret != -2)
 {
 clear_info(info);
@@ -75,6 +76,7 @@ break;
 }
 return (built_in_ret);
 }
+
 /**
  * find_cmd - finds a command in PATH
  * @info: the parameter & return info struct
@@ -127,7 +129,7 @@ void fork_cmd(info_t *info)
 {
 pid_t child_pid;
 
-_pid = fork();
+child_pid = fork();
 if (child_pid == -1)
 {
 /* TODO: PUT ERROR FUNCTION */
@@ -137,7 +139,7 @@ return;
 if (child_pid == 0)
 {
 if (execve(info->path, info->argv, get_environ(info)) == -1)
-}
+{
 free_info(info, 1);
 if (errno == EACCES)
 exit(126);
